@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      text-align: center;
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  let firstInput;
+  let secondInput;
+
+  function getUserInput(promptText) {
+    return parseFloat(prompt(promptText));
+  }
+
+  function checkInputs() {
+    const resultElement = document.getElementById("result");
+
+    if (!isNaN(firstInput) && !isNaN(secondInput)) {
+      if (firstInput > secondInput) {
+        document.body.style.backgroundColor = "lightblue";
+        resultElement.innerHTML = `firstInput > secondInput`;
+      } else if (secondInput > firstInput) {
+        document.body.style.backgroundColor = "orange";
+        resultElement.innerHTML = `secondInput > firstInput:`;
+      } else {
+        document.body.style.backgroundColor = "lightyellow";
+        resultElement.innerHTML = `secondInput == firstInput:`;
+      }
+    } else {
+      alert("Please enter valid numeric inputs.");
+    }
+  }
+
+  function showFirstInput() {
+    alert(`1st input: ${firstInput}`);
+  }
+
+  function showSecondInput() {
+    alert(`2nd input: ${secondInput}`);
+  }
+
+  window.onload = function() {
+    firstInput = getUserInput("Enter the 1st input:");
+    secondInput = getUserInput("Enter the 2nd input:");
+
+  };
+</script>
+
+<button onclick="showFirstInput()">Show 1st Input</button>
+<button onclick="showSecondInput()">Show 2nd Input</button>
+
+<div id="result"></div>
+
+</body>
+</html>
